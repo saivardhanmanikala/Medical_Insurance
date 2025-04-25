@@ -56,15 +56,11 @@ def predict():
         # Convert NumPy float to native Python float
         premium = float(prediction[0])
 
-        return jsonify({"predicted_premium": premium})
+        return jsonify({"predicted_premium": premium })
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     print("🔥 Server is running! Use /predict for predictions.")  
-    import os
-    port = int(os.environ.get("PORT", 1000))  # Use Render's port
-    app.run(host="0.0.0.0", port=port)
-
-
+    app.run(debug=True)
